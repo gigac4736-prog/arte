@@ -17,8 +17,25 @@
             border-radius: 2rem; 
             overflow: hidden;
             position: relative;
+            /* Flex para centrar la imagen si sobra espacio */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        
+        .img-box img { 
+            width: 100%; 
+            height: 100%; 
+            /* CAMBIO IMPORTANTE: 'contain' asegura que se vea toda la imagen sin recortes */
+            object-fit: contain; 
+            transition: transform 0.5s; 
+        }
+
+        /* Clase especial para las pinturas de Historia (para que no queden bordes negros) */
+        .img-box.art-fill img {
+            object-fit: cover;
+        }
+
         .img-box:hover img { transform: scale(1.05); }
 
         .glass-card { 
@@ -114,38 +131,38 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="reveal glass-card flex flex-col">
                     <h3 class="text-2xl font-bold text-orange-500 mb-4">1. La Prehistoria</h3>
-                    <div class="img-box h-48 mb-6"><img src="prehistoria.jpg"></div>
+                    <div class="img-box art-fill h-48 mb-6"><img src="prehistoria.jpg"></div>
                     <p class="text-neutral-400 text-sm">Usaban lo que tenían a mano: óxido de hierro para el rojo, carbón para el negro y tierras o arcillas para los ocres.</p>
                 </div>
 
                 <div class="reveal glass-card flex flex-col">
                     <h3 class="text-2xl font-bold text-blue-400 mb-4">2. La Antigüedad</h3>
-                    <div class="img-box h-48 mb-6"><img src="antiguedad.jpg"></div>
+                    <div class="img-box art-fill h-48 mb-6"><img src="antiguedad.jpg"></div>
                     <p class="text-neutral-400 text-sm italic mb-2">Egipto y Roma: Símbolo de mando.</p>
                     <p class="text-neutral-400 text-xs"><strong>Azul Ultramar:</strong> Lapislázuli de Afganistán. <strong>Púrpura de Tiro:</strong> De caracoles marinos (solo emperadores).</p>
                 </div>
 
                 <div class="reveal glass-card flex flex-col">
                     <h3 class="text-2xl font-bold text-emerald-400 mb-4">3. El Renacimiento</h3>
-                    <div class="img-box h-48 mb-6"><img src="renacimiento.jpg"></div>
+                    <div class="img-box art-fill h-48 mb-6"><img src="renacimiento.jpg"></div>
                     <p class="text-neutral-400 text-sm">Da Vinci estudió el sfumato para dar volumen. El uso del óleo permitió mezclas realistas que imitan la naturaleza.</p>
                 </div>
 
                 <div class="reveal glass-card flex flex-col">
                     <h3 class="text-2xl font-bold text-yellow-400 mb-4">4. El siglo XVII</h3>
-                    <div class="img-box h-48 mb-6"><img src="newton.jpg"></div>
+                    <div class="img-box art-fill h-48 mb-6"><img src="newton.jpg"></div>
                     <p class="text-neutral-400 text-sm">Newton demuestra en 1666 que el color es una propiedad de la luz blanca al usar un prisma. Crea el primer círculo cromático circular.</p>
                 </div>
 
                 <div class="reveal glass-card flex flex-col">
                     <h3 class="text-2xl font-bold text-pink-400 mb-4">5. El siglo XIX</h3>
-                    <div class="img-box h-48 mb-6"><img src="siglo19.jpg"></div>
+                    <div class="img-box art-fill h-48 mb-6"><img src="siglo19.jpg"></div>
                     <p class="text-neutral-400 text-sm">Teoría de Goethe y Chevreul sobre contraste simultáneo. Impresionistas usan sombras de colores en lugar de negro.</p>
                 </div>
 
                 <div class="reveal glass-card flex flex-col">
                     <h3 class="text-2xl font-bold text-purple-400 mb-4">6. Siglo XX</h3>
-                    <div class="img-box h-48 mb-6"><img src="bauhaus.jpg"></div>
+                    <div class="img-box art-fill h-48 mb-6"><img src="bauhaus.jpg"></div>
                     <p class="text-neutral-400 text-sm">Escuela Bauhaus (Itten/Kandinsky). Sistematizaron el círculo de 12 colores y el estudio psicológico del color.</p>
                 </div>
             </div>
