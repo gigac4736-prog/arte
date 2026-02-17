@@ -5,64 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teoría del Color: Masterclass Completa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         body { background-color: #050505; color: #e5e5e5; scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
         .img-box { 
-            background: #111; 
+            background: radial-gradient(circle, #1a1a1a 0%, #080808 100%); 
             border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 2rem; 
             overflow: hidden;
-            position: relative;
-            /* Flex para centrar la imagen si sobra espacio */
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         
         .img-box img { 
             width: 100%; 
             height: 100%; 
-            /* CAMBIO IMPORTANTE: 'contain' asegura que se vea toda la imagen sin recortes */
-            object-fit: contain; 
-            transition: transform 0.5s; 
+            object-fit: contain; /* Mantiene tus imágenes completas */
+            transition: transform 0.6s ease; 
         }
 
-        /* Clase especial para las pinturas de Historia (para que no queden bordes negros) */
-        .img-box.art-fill img {
-            object-fit: cover;
-        }
-
-        .img-box:hover img { transform: scale(1.05); }
+        .img-box:hover img { transform: scale(1.03); }
 
         .glass-card { 
-            background: rgba(255,255,255,0.03); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255,255,255,0.08); 
+            background: rgba(255,255,255,0.02); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255,255,255,0.05); 
             border-radius: 1.5rem; 
-            padding: 2rem;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
         }
+        
+        .glass-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.15);
+        }
+
         .gradient-text { 
-            background: linear-gradient(to right, #fff, #777); 
+            background: linear-gradient(135deg, #fff 30%, #555 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
+        }
+
+        .accent-line {
+            height: 2px;
+            width: 50px;
+            background: currentColor;
+            margin-bottom: 1.5rem;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
-    <div id="progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 z-50 w-0"></div>
+    <div id="progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-600 via-purple-500 to-red-600 z-50 w-0 transition-all duration-150"></div>
 
     <section class="min-h-screen flex flex-col justify-center py-20 px-8">
         <div class="max-w-6xl mx-auto w-full reveal text-center">
             <h1 class="text-6xl md:text-8xl font-black mb-8 gradient-text tracking-tighter">¿Qué es la luz?</h1>
-            <p class="text-xl md:text-2xl text-neutral-400 mb-12 max-w-4xl mx-auto">
-                La luz es una forma de energía radiante que viaja en ondas. Es lo que permite que nuestros ojos vean el mundo. Lo que vemos como "luz blanca" (como la del Sol) es en realidad una mezcla de todas las radiaciones de color juntas.
+            <p class="text-xl md:text-2xl text-neutral-400 mb-6 max-w-4xl mx-auto">
+                La luz es una forma de energía radiante que viaja en ondas a una velocidad increíble de 300,000 km/s.
             </p>
-            <div class="img-box h-[400px] md:h-[550px] w-full shadow-2xl">
+            <p class="text-lg text-neutral-500 mb-12 max-w-3xl mx-auto">
+                Lo que percibimos como "luz blanca" es en realidad el <strong>espectro visible</strong>, una pequeña franja de energía que contiene todas las frecuencias de color que el cerebro puede procesar.
+            </p>
+            <div class="img-box h-[400px] md:h-[550px] w-full">
                 <img src="luz.jpg" alt="Luz blanca y espectro">
             </div>
         </div>
@@ -71,16 +82,18 @@
     <section class="py-24 px-8 bg-[#080808]">
         <div class="max-w-6xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-12 mb-16 reveal">
-                <div>
+                <div class="glass-card">
+                    <div class="accent-line text-white"></div>
                     <h2 class="text-4xl font-bold mb-6 italic">¿Qué es el color?</h2>
-                    <p class="text-lg text-neutral-400">
-                        El color no es algo que los objetos "tengan" por sí mismos, sino una percepción visual. Cuando la luz blanca choca con un objeto, este absorbe algunas ondas y refleja otras. El color que vemos es, precisamente, la luz que el objeto ha rechazado y llega a nuestros ojos.
+                    <p class="text-lg text-neutral-400 leading-relaxed">
+                        El color es una <strong>construcción cerebral</strong>. Los objetos absorben ciertas longitudes de onda y reflejan otras. Por ejemplo, una manzana roja absorbe todos los colores excepto el rojo, que rebota hacia tu ojo. Sin luz, no existe el color.
                     </p>
                 </div>
-                <div>
-                    <h2 class="text-4xl font-bold mb-6 text-blue-400">¿Por qué aparece un arcoíris?</h2>
-                    <p class="text-lg text-neutral-400">
-                        Ocurre por un fenómeno llamado refracción. Cuando los rayos de sol atraviesan las gotas de lluvia, estas actúan como pequeños prismas de cristal, descomponiendo la luz blanca en los siete colores que la forman (rojo, naranja, amarillo, verde, cian, azul y violeta).
+                <div class="glass-card">
+                    <div class="accent-line text-blue-400"></div>
+                    <h2 class="text-4xl font-bold mb-6 text-blue-400">El fenómeno del Arcoíris</h2>
+                    <p class="text-lg text-neutral-400 leading-relaxed">
+                        Se produce mediante la <strong>dispersión refractiva</strong>. Cada gota de agua actúa como un prisma: la luz entra, se refleja en la pared interna de la gota y sale descompuesta en sus siete colores fundamentales debido a que cada color viaja a una velocidad distinta dentro del agua.
                     </p>
                 </div>
             </div>
@@ -93,28 +106,28 @@
     <section class="py-24 px-8">
         <div class="max-w-6xl mx-auto">
             <div class="reveal text-center mb-16">
-                <h2 class="text-5xl font-black italic mb-6">¿Cómo vemos los colores?</h2>
+                <h2 class="text-5xl font-black italic mb-6">El Proceso Visual</h2>
                 <p class="text-neutral-400 text-lg max-w-3xl mx-auto">
-                    El ojo humano funciona como una cámara oscura muy avanzada. El proceso es el siguiente:
+                    Nuestros ojos traducen energía electromagnética en señales eléctricas que el cerebro interpreta como imágenes.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 reveal">
-                <div class="glass-card p-6">
-                    <h4 class="font-bold text-white mb-2 uppercase text-xs tracking-widest">1. Entrada</h4>
-                    <p class="text-sm text-neutral-400">La luz rebota en los objetos y entra por la córnea y la pupila.</p>
+                <div class="glass-card !p-6">
+                    <h4 class="font-bold text-white mb-3 uppercase text-xs tracking-[0.2em]">01. Refracción</h4>
+                    <p class="text-sm text-neutral-400">La córnea y el humor acuoso desvían la luz para que pase por el centro de la pupila.</p>
                 </div>
-                <div class="glass-card p-6">
-                    <h4 class="font-bold text-white mb-2 uppercase text-xs tracking-widest">2. Enfoque</h4>
-                    <p class="text-sm text-neutral-400">El cristalino ajusta la imagen para que llegue nítida al fondo del ojo.</p>
+                <div class="glass-card !p-6">
+                    <h4 class="font-bold text-white mb-3 uppercase text-xs tracking-[0.2em]">02. Acomodación</h4>
+                    <p class="text-sm text-neutral-400">El cristalino cambia su forma para enfocar objetos a diferentes distancias sobre la retina.</p>
                 </div>
-                <div class="glass-card p-6">
-                    <h4 class="font-bold text-white mb-2 uppercase text-xs tracking-widest">3. Captación</h4>
-                    <p class="text-xs text-neutral-400"><strong>Bastones:</strong> Ven en blanco y negro.<br><strong>Conos:</strong> Sensibles al rojo, verde y azul.</p>
+                <div class="glass-card !p-6">
+                    <h4 class="font-bold text-white mb-3 uppercase text-xs tracking-[0.2em]">03. Fotorrecepción</h4>
+                    <p class="text-xs text-neutral-400"><strong>Bastones:</strong> 120 millones de células para visión nocturna.<br><strong>Conos:</strong> 6 millones para detalle y color (RGB).</p>
                 </div>
-                <div class="glass-card p-6">
-                    <h4 class="font-bold text-white mb-2 uppercase text-xs tracking-widest">4. Proceso</h4>
-                    <p class="text-sm text-neutral-400">Impulsos eléctricos viajan por el nervio óptico hasta el cerebro.</p>
+                <div class="glass-card !p-6">
+                    <h4 class="font-bold text-white mb-3 uppercase text-xs tracking-[0.2em]">04. Interpretación</h4>
+                    <p class="text-sm text-neutral-400">El cerebro invierte la imagen (que llega al revés) y fusiona la visión de ambos ojos.</p>
                 </div>
             </div>
 
@@ -126,44 +139,44 @@
 
     <section class="py-24 px-8 bg-[#0a0a0a]">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-center text-5xl font-black mb-20 uppercase tracking-tighter">Historia del Color</h2>
+            <h2 class="text-center text-5xl font-black mb-20 uppercase tracking-tighter">Evolución del Pensamiento Cromático</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="reveal glass-card flex flex-col">
-                    <h3 class="text-2xl font-bold text-orange-500 mb-4">1. La Prehistoria</h3>
-                    <div class="img-box art-fill h-48 mb-6"><img src="prehistoria.jpg"></div>
-                    <p class="text-neutral-400 text-sm">Usaban lo que tenían a mano: óxido de hierro para el rojo, carbón para el negro y tierras o arcillas para los ocres.</p>
+                <div class="reveal glass-card flex flex-col border-t-4 border-orange-500">
+                    <h3 class="text-2xl font-bold text-orange-500 mb-4">Prehistoria</h3>
+                    <div class="img-box h-48 mb-6"><img src="prehistoria.jpg"></div>
+                    <p class="text-neutral-400 text-sm">El arte parietal usaba pigmentos minerales aglutinados con grasa animal. El rojo simbolizaba la vida y la sangre.</p>
                 </div>
 
-                <div class="reveal glass-card flex flex-col">
-                    <h3 class="text-2xl font-bold text-blue-400 mb-4">2. La Antigüedad</h3>
-                    <div class="img-box art-fill h-48 mb-6"><img src="antiguedad.jpg"></div>
-                    <p class="text-neutral-400 text-sm italic mb-2">Egipto y Roma: Símbolo de mando.</p>
-                    <p class="text-neutral-400 text-xs"><strong>Azul Ultramar:</strong> Lapislázuli de Afganistán. <strong>Púrpura de Tiro:</strong> De caracoles marinos (solo emperadores).</p>
+                <div class="reveal glass-card flex flex-col border-t-4 border-blue-400">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">Antigüedad</h3>
+                    <div class="img-box h-48 mb-6"><img src="antiguedad.jpg"></div>
+                    <p class="text-neutral-400 text-sm italic mb-2">Pigmentos de Lujo.</p>
+                    <p class="text-neutral-400 text-xs leading-relaxed">La <strong>Púrpura de Tiro</strong> requería miles de moluscos para un gramo de tinte, haciéndola más cara que el oro.</p>
                 </div>
 
-                <div class="reveal glass-card flex flex-col">
-                    <h3 class="text-2xl font-bold text-emerald-400 mb-4">3. El Renacimiento</h3>
-                    <div class="img-box art-fill h-48 mb-6"><img src="renacimiento.jpg"></div>
-                    <p class="text-neutral-400 text-sm">Da Vinci estudió el sfumato para dar volumen. El uso del óleo permitió mezclas realistas que imitan la naturaleza.</p>
+                <div class="reveal glass-card flex flex-col border-t-4 border-emerald-400">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-4">Renacimiento</h3>
+                    <div class="img-box h-48 mb-6"><img src="renacimiento.jpg"></div>
+                    <p class="text-neutral-400 text-sm">Aparece la perspectiva atmosférica y el <strong>claroscuro</strong>. El color se usa para guiar el ojo del espectador hacia el punto de fuga.</p>
                 </div>
 
-                <div class="reveal glass-card flex flex-col">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-4">4. El siglo XVII</h3>
-                    <div class="img-box art-fill h-48 mb-6"><img src="newton.jpg"></div>
-                    <p class="text-neutral-400 text-sm">Newton demuestra en 1666 que el color es una propiedad de la luz blanca al usar un prisma. Crea el primer círculo cromático circular.</p>
+                <div class="reveal glass-card flex flex-col border-t-4 border-yellow-400">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-4">Siglo XVII</h3>
+                    <div class="img-box h-48 mb-6"><img src="newton.jpg"></div>
+                    <p class="text-neutral-400 text-sm">La física del color. Newton probó que la oscuridad no es un color, sino la ausencia total de luz.</p>
                 </div>
 
-                <div class="reveal glass-card flex flex-col">
-                    <h3 class="text-2xl font-bold text-pink-400 mb-4">5. El siglo XIX</h3>
-                    <div class="img-box art-fill h-48 mb-6"><img src="siglo19.jpg"></div>
-                    <p class="text-neutral-400 text-sm">Teoría de Goethe y Chevreul sobre contraste simultáneo. Impresionistas usan sombras de colores en lugar de negro.</p>
+                <div class="reveal glass-card flex flex-col border-t-4 border-pink-400">
+                    <h3 class="text-2xl font-bold text-pink-400 mb-4">Siglo XIX</h3>
+                    <div class="img-box h-48 mb-6"><img src="siglo19.jpg"></div>
+                    <p class="text-neutral-400 text-sm">Goethe desafía a Newton enfocándose en la <strong>percepción psicológica</strong>: cómo los colores nos hacen sentir emociones.</p>
                 </div>
 
-                <div class="reveal glass-card flex flex-col">
-                    <h3 class="text-2xl font-bold text-purple-400 mb-4">6. Siglo XX</h3>
-                    <div class="img-box art-fill h-48 mb-6"><img src="bauhaus.jpg"></div>
-                    <p class="text-neutral-400 text-sm">Escuela Bauhaus (Itten/Kandinsky). Sistematizaron el círculo de 12 colores y el estudio psicológico del color.</p>
+                <div class="reveal glass-card flex flex-col border-t-4 border-purple-400">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-4">Siglo XX</h3>
+                    <div class="img-box h-48 mb-6"><img src="bauhaus.jpg"></div>
+                    <p class="text-neutral-400 text-sm">La Bauhaus define el diseño moderno. Se establecen los contrastes de temperatura (frío/cálido) y saturación.</p>
                 </div>
             </div>
         </div>
@@ -171,53 +184,58 @@
 
     <section class="py-24 px-8 border-t border-white/5">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black text-center mb-16 italic">Relaciones y Círculo Cromático</h2>
+            <h2 class="text-4xl font-black text-center mb-16 italic">Teoría de la Armonía</h2>
             
             <div class="grid md:grid-cols-3 gap-8 mb-20 reveal">
                 <div class="glass-card">
-                    <h4 class="font-bold text-indigo-400 mb-4">Mezclas</h4>
-                    <ul class="text-sm text-neutral-400 space-y-2">
-                        <li><strong>Secundarios:</strong> Mezcla de dos primarios (Naranja).</li>
-                        <li><strong>Terciarios:</strong> Primario + secundario adyacente.</li>
-                        <li><strong>Cuaternarios:</strong> Dos terciarios (tonos tierra).</li>
+                    <h4 class="font-bold text-indigo-400 mb-4">Niveles de Mezcla</h4>
+                    <ul class="text-sm text-neutral-400 space-y-3">
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500"></span> <strong>Primarios:</strong> No se pueden crear mezclando (RYB/RGB).</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-orange-500"></span> <strong>Secundarios:</strong> Unión de dos primarios al 50%.</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-yellow-600"></span> <strong>Terciarios:</strong> Mezcla de un primario y un secundario.</li>
                     </ul>
                 </div>
                 <div class="md:col-span-2 glass-card">
-                    <h4 class="font-bold text-white mb-4">¿Qué es el círculo cromático?</h4>
-                    <p class="text-neutral-400">Es una representación gráfica (en forma de rueda) que ordena los colores de forma lógica para entender cómo se relacionan entre sí.</p>
+                    <h4 class="font-bold text-white mb-4">Utilidad del Círculo Cromático</h4>
+                    <p class="text-neutral-400 leading-relaxed">
+                        Es la herramienta esencial para artistas y diseñadores. Permite identificar de inmediato colores <strong>complementarios</strong> (opuestos) para crear impacto visual o <strong>análogos</strong> (adyacentes) para crear serenidad.
+                    </p>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8 reveal">
+            <div class="grid md:grid-cols-3 gap-12 reveal">
                 <div class="text-center group">
-                    <div class="img-box h-40 mb-4"><img src="analogia.jpg"></div>
-                    <h5 class="font-bold">La Analogía</h5>
-                    <p class="text-xs text-neutral-500 mt-2">Colores "vecinos". Armonías relajantes.</p>
+                    <div class="img-box h-48 mb-6 border-b-4 border-yellow-500"><img src="analogia.jpg"></div>
+                    <h5 class="font-bold text-lg">La Analogía</h5>
+                    <p class="text-sm text-neutral-500 mt-2">Uso de 3 colores seguidos. Transmite fluidez y calma en el diseño.</p>
                 </div>
                 <div class="text-center group">
-                    <div class="img-box h-40 mb-4"><img src="contraste.jpg"></div>
-                    <h5 class="font-bold text-indigo-400">El Contraste</h5>
-                    <p class="text-xs text-neutral-500 mt-2">Complementarios enfrentados. Resalte máximo.</p>
+                    <div class="img-box h-48 mb-6 border-b-4 border-indigo-500"><img src="contraste.jpg"></div>
+                    <h5 class="font-bold text-lg text-indigo-400">El Contraste</h5>
+                    <p class="text-sm text-neutral-500 mt-2">Máxima tensión visual. Ideal para resaltar botones o elementos clave.</p>
                 </div>
                 <div class="text-center group">
-                    <div class="img-box h-40 mb-4"><img src="triada.jpg"></div>
-                    <h5 class="font-bold">Tríada</h5>
-                    <p class="text-xs text-neutral-500 mt-2">Equilibrio perfecto y vibrante.</p>
+                    <div class="img-box h-48 mb-6 border-b-4 border-emerald-500"><img src="triada.jpg"></div>
+                    <h5 class="font-bold text-lg">Tríada Equidistante</h5>
+                    <p class="text-sm text-neutral-500 mt-2">Tres colores a 120°. Ofrece una paleta vibrante pero equilibrada.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/5 text-center text-neutral-600 text-[10px] tracking-[0.5em] uppercase">
-        Luz • Color • Historia • 2024
+    <footer class="py-16 border-t border-white/5 text-center text-neutral-600 text-[11px] tracking-[0.6em] uppercase">
+        Ciencia • Arte • Percepción • 2026
     </footer>
 
     <script>
+        const observerOptions = { threshold: 0.15 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
